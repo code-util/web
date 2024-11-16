@@ -14,7 +14,7 @@ function setVhVariable() {
   }
   
 setVhVariable();
-window.addEventListener('resize', setVhVariable);
+// window.addEventListener('resize', setVhVariable);
 
 class App {
     constructor() {
