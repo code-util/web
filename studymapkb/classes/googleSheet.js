@@ -1,29 +1,49 @@
 class GoogleSheet {
-    constructor(url, sheetGidList, rowFormatter) {
+    constructor(url, sheetGidList, rowFormatter, errorCallback, loadingOverlay) {
         this.url = url
         this.sheetGidList = sheetGidList
         this.result = {}
         this.rowFormatter = rowFormatter
+        this.freshStack = []
+        this.result = this.loadLocal()
+        this.errorCallback = errorCallback
+        this.loadingOverlay = loadingOverlay
     }
 
-    async loadSheets(errorCallback) {
-        this.success = true
+    async ask(sheetName) {
+        show(this.loadingOverlay)
 
         for (let i = 0; i < this.sheetGidList.length; i++) {
             const item = this.sheetGidList[i];
-            this.success = await this.fetchCSV(item)
+            
+            if (item.sheetName == sheetName) {
+                if (this.freshStack.find((value) => value == sheetName)) {
+                    hide(this.loadingOverlay)
+                    return this.result[sheetName]
+                
+                } else {
+                    let success = await this.fetchCSV(item)
+                    hide(this.loadingOverlay)
 
-            if (!this.success) break
+                    if (success) {
+                        this.freshStack.push(sheetName)
+                        this.saveToLocal()
+                        return this.result[sheetName]
+                    }
+
+                    if (this.result[sheetName]) {
+                        this.errorCallback('OFFLINE-PASS')
+                        return this.result[sheetName]
+                    }
+
+                    this.errorCallback('OFFLINE-FAIL')
+                    return null
+                }
+            }
         }
 
-        if (!this.success) {
-            this.result = this.loadLocal()
-            console.log(Object.keys(this.result).length > 0)
-           
-            if (Object.keys(this.result).length == 0) errorCallback('OFFLINE-FAIL')
-            else errorCallback('OFFLINE-PASS')
-        } 
-        else this.saveToLocal()
+        hide(this.loadingOverlay)
+        return {}
     }
 
     get sheets() {

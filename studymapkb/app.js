@@ -5,6 +5,9 @@
 // - location viewer
 // - 
 
+console.log('akrit did this')
+console.log('check me out in linked in: akrit ghimire :)')
+
 function setVhVariable() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -56,9 +59,14 @@ class App {
             const buildingMeta = rows.slice(0, 2)
             const roomsData = rows.slice(3, rows.length).map((row) => row.slice(2, row.length))
             
+            let buildingFeatures = []
+            if (buildingMeta[1][1].length > 3) {
+                buildingFeatures = buildingMeta[1][1].split(';').map(feature => feature.trim())
+            }
+
             return {
                 desc: buildingMeta[0][1],
-                features: buildingMeta[1][1].split(';').map(feature => feature.trim()),
+                features: buildingFeatures,
                 rooms: roomsData.map(room => ({
                     name: room[0], 
                     desc: room[1],
@@ -68,7 +76,7 @@ class App {
                     additionalFeatures: room[5].split(';').map(feature => feature.trim()),
                 }))
             }
-        }) 
+        }, (type) => this.loadError(type), this.loadOverlay) 
 
         this.language = new Language([])
 
@@ -76,20 +84,20 @@ class App {
         hide(this.offlineOverlay, this.internetNeededOverlay)
     }
 
-    async setup() {
-        await this.googleSheet.loadSheets((type) => this.loadError(type))
-        
+    async setup() {        
         this.populateBuildings()
         this.routing = new Routing()
 
-        const findBuilding = (name) => this.buildings.find((value) => value.name.replace(' ', '') == name)
+        const findBuilding = (name) => this.buildings.find((value) => value.name.replace(/ /g, '') == name)
         
         if (this.routing.currentRoute.includes('/building/')) {
+            console.log('here')
+
             const name = this.routing.currentRoute.replace('/building/', '')
             const buildingObj = findBuilding(name)
 
             if (!buildingObj) this.mapState()
-            this.infoState(buildingObj)
+            await this.infoState(buildingObj)
 
         } else this.mapState()
 
@@ -121,10 +129,11 @@ class App {
             building.element.classList.add('buildingHover')
         })
     }
-    infoState(building) {
+    async infoState(building) {
         if (!building) return
 
-        this.routing.switch(`/building/${building.name.replace(' ', '')}`)
+        this.routing.switch(`/building/${building.name.replace(/ /g, '')}`)
+        await building.gatherInfo()
 
         hide(this.mapHeader, this.buttonStack)
         show(this.mapOverlay, this.buildingHeader, this.moreInfo, this.closeButton)
@@ -180,9 +189,7 @@ class App {
     populateBuildings() {
         buildingMaps.forEach(building => {
             let [name, path] = building
-            let data = this.googleSheet.sheets[name] || {} 
-            
-            this.buildings.push(new Building(name, path, data, (building) => this.infoState(building)))
+            this.buildings.push(new Building(name, path, this.googleSheet, (building) => this.infoState(building)))
         })
     }
 }

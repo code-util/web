@@ -1,12 +1,10 @@
 class Building {
-    constructor(name, path, data, buildingClick) {
+    constructor(name, path, googleSheet, buildingClick) {
         this.name = name
-        this.desc = data.desc || NO_DATA
-        this.features = data.features || []
-
-        const rooms = data.rooms || []
-        this.rooms = rooms.map(room => new Room(room))
-
+        this.desc = NO_DATA
+        this.features = []
+        this.rooms = []
+        this.googleSheet = googleSheet
 
         this.buildingClick = buildingClick
 
@@ -34,8 +32,20 @@ class Building {
         else this.element.classList.remove('activeBuilding')
     }
 
-    onclick() {
+    async gatherInfo() {
+        const data = await this.googleSheet.ask(this.name)
+        
+        if (Object.keys(data).length > 0) {
+            this.desc = data.desc 
+            this.features = data.features
+            const rooms = data.rooms
+            this.rooms = rooms.map(room => new Room(room))
+        }
+    }
+
+    async onclick() {
         this.element.blur()
+        await this.gatherInfo()
         this.buildingClick(this)
     }
 }

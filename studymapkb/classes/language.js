@@ -58,7 +58,6 @@ class Language {
         // if english and no revert text, end as already translated
 
         const toTranslate = getAll('[data-translate]')
-        console.log(toTranslate)
     }
 
     saveLanguage() {

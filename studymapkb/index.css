@@ -29,11 +29,12 @@
 }
 
 html, body {
-    height: calc(var(--vh) * 100); 
+    min-height: calc(var(--vh) * 100); 
+    height: 100%;
 }
 
 body {
-    background-color: var(--bg);
+    background-color: var(--light);
     width: 100%;
 }
 
@@ -62,7 +63,7 @@ body {
     width: 100%;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .overlays {
@@ -189,6 +190,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: var(--bg);
 }
 .mapOverlay {
     position: absolute;
@@ -285,17 +287,18 @@ body {
 
 .moreInfoWrapper {
     background-color: var(--light);
-    padding: 32px 0;
-    height: 50vh;
+    padding-top: 32px;
+    max-height: 400px;
 }
 .moreInfo {
     padding: 0 32px;
+    padding-bottom: 32px;
     height: 100%;
     max-width: 800px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 .moreInfo p {
     color: var(--darkest);
