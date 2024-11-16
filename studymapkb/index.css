@@ -8,6 +8,7 @@
     --success: #bee7b2;
     --error: #382448;
     --error2: #dea8f2;
+    --vh: 100vh;
 }
 
 * {
@@ -27,13 +28,12 @@
     transition: .3s;
 }
 
-html {
-    height: 100vh;
+html, body {
+    height: calc(var(--vh) * 100); 
 }
 
 body {
     background-color: var(--bg);
-    height: 100%;
     width: 100%;
 }
 
