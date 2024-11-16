@@ -1,7 +1,7 @@
 const MIN_ZOOM = 2
 const MAX_ZOOM = 6
-const PAN_SPEED = 0.8
-const ZOOM_SPEED = 0.1
+const PAN_SPEED = 0.6
+const ZOOM_SPEED = 0.05
 const ZOOM_INCREMENT = .5
 
 class ZoomPanElement {
@@ -72,14 +72,14 @@ class ZoomPanElement {
         // Touch panning
         this.mapElement.addEventListener('touchstart', (event) => {
             if (event.touches.length === 1) {
-                this.isPanning = true;
+                // this.isPanning = true;
                 this.startX = event.touches[0].clientX - this.translateX / PAN_SPEED;
                 this.startY = event.touches[0].clientY - this.translateY / PAN_SPEED;
             } else if (event.touches.length === 2) {
                 this.touchStartDist = this.getDistanceBetweenTouches(event);
                 this.touchStartScale = this.scale;
             }
-            event.preventDefault(); // Prevent scrolling
+            // event.preventDefault(); // Prevent scrolling
         });
 
         this.mapElement.addEventListener('touchmove', (event) => {

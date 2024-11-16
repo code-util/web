@@ -27,9 +27,13 @@
     transition: .3s;
 }
 
+html {
+    height: 100vh;
+}
+
 body {
     background-color: var(--bg);
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
