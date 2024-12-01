@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ismobilejs/0.4.1/isMobile.min.js"></script>
+    <script src="./warpEffect.js" defer></script>
+    <script src="./utils.js" defer></script>
+    <script src="./question.js" defer></script>
+    <script src="./app.js" defer></script>
+    <script src="./main.js" defer></script>
+    <script src="watermark.js"></script>
+</head>
+
+<body>
+    <div class="start" id="effect">
+        <canvas></canvas>
+        <div class="container intro">
+            <h1 class="fade-in-first">Appleton Cafe</h1>
+            <p class="fade-in-second">This survey requires your email to ensure one submission per person. The data will
+                be anonymised once results have been collected. Therefore any responses you make in this form will be
+                anonymous.</p>
+            <p class="fade-in-second">Once you finish the survey, your score will be calculated and the Star Wars
+                characteer you most identify with (in the context of this cafe survey) will be displayed!</p>
+            <br>
+            <p class="close fade-in-last">Enter your Student Email:</p>
+            <input type="email" class="fade-in-last" id="studentmail">
+            <div class="button-contain fade-in-last">
+                <div class="button startBtn active disabled">
+                    Start Survey
+                </div>
+            </div>
+        </div>
+        <div class="final hidden">
+            <div class="screen">
+                <div class="card">
+                    <p class="fade-in-first">Your Appleton Cafe Character Aura is...</p>
+                    <h1 class="fade-in-second character">Mother Aniseya</h1>
+                    <p class="fade-in-last persona">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem numquam at pariatur aliquam quia. Nisi voluptatibus quibusdam fugit numquam.</p>
+                    <p class="small fade-in-last">Thank you for taking part in this survey, your response has been recorded.</p>
+                </div>
+                <img class="fade-in-second character-image" loading="lazy">
+            </div>
+        </div>
+        <p class="attribution">Warp Effect: <a href="https://codepen.io/NiklasKnaack/pen/OmwgKb">NiklasNnaak CodePen</a>
+        </p>
+    </div>
+    <div class="context hidden">
+        <div class="button active skipBtn">Skip</div>
+        <div id="board">
+            <div id="content">
+                <p id="subtitle">The Change of Appleton Cafe</p>
+                <br>
+                <!-- And make it cheesy ! -->
+                <p>Long, long ago, in a building close, close by, a Cafe was built for the students of the University.</p>
+                <br>
+                <p>With its steel plated surfaces, and blood red pillars extending to the heavens, the shiny new cafe was opened, and since then has served many students. From beverages to meals, the cafe has served the students well.</p>
+                <br>
+                <p>But it is time for change. The students now complete a survey seeking this change...</p>
+            </div>
+        </div>
+        <p class="attribution">Opening Crawl: <a href="https://codepen.io/christopherkade/pen/rJVPjz">christopherkade CodePen</a></p>
+    </div>
+    <div class="overall-input hidden">
+        <div class="container">
+            <p class="title">Any last words?</p>
+            <p class="sub">Let us know any last thoughts you have on the cafe, any grievances or joys you find from the space. (optional)</p>
+            <textarea id="last-words"></textarea>
+            <div class="button active">Finish</div>
+        </div>
+    </div>
+    <audio id="background-music" class="hidden" loop>
+        <source type="audio/mpeg">
+    </audio>
+    <iframe name="hiddenFrame" class="hidden"></iframe>
+</body>
+
+</html>
