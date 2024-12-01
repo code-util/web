@@ -43,7 +43,7 @@ html {
     justify-content: center;
     max-width: 800px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 2.5rem;
 }
 
 .main {
@@ -510,5 +510,8 @@ textarea:focus {
     }
     .final .screen {
         overflow-y: auto;
+    }
+    .input {
+        padding: 1rem;
     }
 }
