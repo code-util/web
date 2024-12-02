@@ -3,7 +3,7 @@ const app = new App()
 app.addQuestion(
     'seating',
     new Question(
-        'Rate the quality of seating 1-5',
+        'Rate the quality of seating (1-5)',
         './assets/gifs/seating.gif',
         11,
         app.navigate
@@ -13,7 +13,7 @@ app.addQuestion(
 app.addQuestion(
     'tables',
     new Question(
-        'Rate the quality of the tables 1-5',
+        'Rate the quality of the tables (1-5)',
         './assets/gifs/tables.gif',
         22,
         app.navigate
@@ -23,7 +23,7 @@ app.addQuestion(
 app.addQuestion(
     'plugs',
     new Question(
-        'Rate the charging space availability 1-5',
+        'Rate the charging space availability (1-5)',
         './assets/gifs/plugs.gif',
         33,
         app.navigate
@@ -33,7 +33,7 @@ app.addQuestion(
 app.addQuestion(
     'flooring',
     new Question(
-        'Rate the flooring 1-5',
+        'Rate the flooring (1-5)',
         './assets/gifs/flooring.gif',
         44,
         app.navigate
@@ -43,7 +43,7 @@ app.addQuestion(
 app.addQuestion(
     'decoration',
     new Question(
-        'Rate the decoration of the space 1-5',
+        'Rate the decoration of the space (1-5)',
         './assets/gifs/decoration.gif',
         55,
         app.navigate
@@ -53,7 +53,7 @@ app.addQuestion(
 app.addQuestion(
     'food',
     new Question(
-        'Rate the food quality and choice 1-5',
+        'Rate the food: quality and choice (1-5)',
         './assets/gifs/food.gif',
         66,
         app.navigate
@@ -63,7 +63,7 @@ app.addQuestion(
 app.addQuestion(
     'drinks',
     new Question(
-        'Rate the beverage quality and choice 1-5',
+        'Rate the drinks: quality and choice (1-5)',
         './assets/gifs/drinks.gif',
         77,
         app.navigate
@@ -73,7 +73,7 @@ app.addQuestion(
 app.addQuestion(
     'price',
     new Question(
-        'Rate overall affordability of the cafe 1-5',
+        'Rate the overall affordability of the cafe (1-5)',
         './assets/gifs/affordability.gif',
         88,
         app.navigate
@@ -100,7 +100,7 @@ app.setCharacters([
         hi: 19,
         character: 'Mother Aniseya',
         img: './assets/characters/aniseya-min.png',
-        persona: "You try not to mind. But it keeps pushing your buttons, grinding on your nerves. You wish for better, you will not settle for best. You do this not just for yourself, but for those you lead. There are some that may despise your choice, but you do you. You will no longer accept having to leave the building to get some tea. Your kin join you in this mission, you band as one. The tea is coming, one way or the other..."
+        persona: "You try not to mind. But it keeps pushing your buttons, grinding on your nerves. You wish for better, you will not settle for best. You do this not just for yourself, but for those you lead. There are some that may despise your choice, but you do you. You will no longer accept having to leave the building to get some tea. Your coven join you in this mission, you band as one. The tea is coming, one way or another..."
     },
     {
         lo: 20,
@@ -121,14 +121,14 @@ app.setCharacters([
         hi: 34,
         character: 'Representative Binks',
         img: './assets/characters/jarjar-min.png',
-        persona: "You occasionally stumble into the place. Sucks it does. But you find a way to see beauty in it. It doesn't matter what it looks like, it's the feeling it gives that counts. A space that brings friends together. But it does not affect you anyway, you rarely enter the scene and when you do you leave as quickly as you came."
+        persona: "You occasionally stumble into the place. Sucks it does. But you find a way to see beauty in it. It doesn't matter what it looks like, it's the feeling it gives that counts. A space that brings friends together. But it doesn't affect you anyway, you rarely enter the scene and when you do you leave as quickly as you came."
     },
     {
         lo: 35,
         hi: 40,
         character: 'Master Yoda',
         img: './assets/characters/yoda-min.png',
-        persona: "Enough time, there is not. Dwell on the broken, you must not. Lived many lives, I have. Coffee, you do not need. More things meaning to life, there are. Enjoy the present, you must. The state of it, matter not. Many challenges, you can overcome. One, this is."
+        persona: "Enough time, there is not. Dwell on the broken, you must not. Lived many lives, I have. Need coffee, you do not. More things meaning to life, there are. Enjoy the present, you must. The state of it, matter not. Many challenges, you can overcome. One, this is."
     },
 ])
 
