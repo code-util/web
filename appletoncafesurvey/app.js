@@ -28,6 +28,7 @@ class App {
         this.currentAudio = null
 
         this.finalData = {}
+
     }
 
     changeMusic(type) {
@@ -43,6 +44,8 @@ class App {
         } else if (type == 'final') {
             this.audioPlayer.src = './assets/sound/final.mp3'
             this.audioPlayer.loop = false
+        } else {
+            this.audioPlayer.src = ''
         }
 
 
@@ -210,7 +213,17 @@ class App {
         // show cover page
         let value = localStorage.getItem('rating')
         if (value) this.final()
-        else this.navigate(0)
+        else {
+            this.images = getAll("img[data-src]", this.root);
+
+            this.images.forEach((img) => { // lazy load
+                console.log('here')
+                img.src = img.getAttribute("data-src");
+                img.removeAttribute("data-src");
+            });
+
+            this.navigate(0)
+        }
     }
 
     addQuestion(label, question) {

@@ -110,7 +110,7 @@ class Question {
                             <div class="progress"></div>
                         </div>
                     </div>
-                    <img loading="lazy" src="${this.source}">
+                    <img data-src="${this.source}">
                 </div>
                 <div class="question-container">
                     <p class="question-first">${this.questionOne}</p>
