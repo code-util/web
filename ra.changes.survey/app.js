@@ -245,7 +245,7 @@ class App {
         let form = document.createElement('form');
         form.action = action;
         form.method = method;
-        form.target = '_blank'
+        form.target = 'hiddenFrame'
 
         form.classList.add('hidden')
 
