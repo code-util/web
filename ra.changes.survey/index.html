@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/LavaLamp.css">
+    <script src="./utils.js" defer></script>
+    <script src="./question.js" defer></script>
+    <script src="./app.js" defer></script>
+    <script src="./main.js" defer></script>
+    <script src="watermark.js"></script>
+    <title>Appleton Cafe Survey</title>
+</head>
+
+<body>
+    <div class="gooey">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <p class="disclaimer">Data entered is Anonymous</a></p>
+    <p class="attribution">Lava Lamp: <a href="https://codepen.io/pedroo-andre/pen/VwyoZYz">Pedro André CodePen</a></p>
+    <div class="start-screen hidden">
+        <div class="content">
+            <h1>Changes Happening</h1>
+            <p>ResLife is changing the way RAs get paid. Instead of <span>75% off</span> rent, RAs will pay full rent but get monthly payments.<br><span>£536/month (self-catered)</span><span>£597/month (catered)</span></p>
+            <p>Rent prices will increase by <span>7%</span> next academic year, so RAs will be paying <span>more</span> in rent than previous years. ResLife will also be changing the duty structure too.</p>
+            <p><strong>Your opinion can change what happens. Your response will be anonymous, your voice will be powerful.</strong></p>
+            <button class="start" onclick="app.changeScreen(app.youScreen); app.changeMusic('music')">Share your Opinion</button>
+        </div>
+    </div>
+    <div class="you-screen hidden">
+        <div class="content">
+            <h1>About You</h1>
+            <div class="input">
+                <p>What type of accomodation do you stay in?</p>
+                <div class="choice" id="accom">
+                    <input type="radio" id="Self-Catered" name="accom-type">
+                    <label for="Self-Catered">Self Catered</label>
+                    <input type="radio" id="Catered" name="accom-type">
+                    <label for="Catered">Catered</label>
+                </div>
+            </div>
+            <div class="input">
+                <p>What is your level of study?</p>
+                <div class="choice choice-col" id="level">
+                    <input type="radio" id="Undergraduate" name="study-level">
+                    <label for="Undergraduate">Undergraduate</label>
+                    <input type="radio" id="Postgraduate-Taught" name="study-level">
+                    <label for="Postgraduate-Taught">Postgraduate Taught</label>
+                    <input type="radio" id="Postgraduate-Research" name="study-level">
+                    <label for="Postgraduate-Research">Postgraduate Research</label>
+                    <input type="radio" id="Other" name="study-level">
+                    <label for="Other">Other</label>
+                </div>
+            </div>
+            <div class="input">
+                <p>What do you pay in rent for the whole year?<br>(in pounds £)</p>
+                <input type="number" id="rent">
+            </div>
+            <div class="buttons-group">
+                <button class="prev" onclick="app.changeScreen(app.startScreen)">Go Back</button>
+                <button class="next" onclick="app.validate(() => {app.changeScreen(app.choiceScreen); app.buildChoice(app.choices[0])})">Start Survey</button>
+            </div>
+        </div>
+    </div>
+    <div class="choice-screen hidden">
+        <div class="content">
+            <p id="question">As a student I feel that i can do this and that</p>
+            <div class="choices" id="answer">
+                <textarea rows="2"></textarea>
+            </div>
+            <div class="buttons-group">
+                <button class="prev" id="qprev">Back</button>
+                <button class="next" id="qnext">Next</button>
+            </div>
+        </div>
+    </div>
+    <div class="love-screen hidden">
+        <div class="content">
+            <div class="gauge-wrapper">
+                <div class="gauge four rischio1">
+                  <div class="slice-colors">
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                    <div class="st slice-item"></div>
+                  </div>
+                  <div class="needle needle-random"></div>
+                  <div class="gauge-center">
+                    <div class="label"></div>
+                  </div>    
+                </div>
+              </div>
+            <h1>You Are</h1>
+            <h2 id="temperature">8.5</h2>
+            <p id="message">On the <span>Lava Scale.</span>Times have been tough and you don't take shit from anyone.</p>
+            <p class="small">Thank you for taking part in this survey. Your data is anonymous, but your opinions will help us ensure that ResLife make changes that are actually in your best interest!</p>
+        </div>
+    </div>
+    <audio id="background-music" class="hidden" loop>
+        <source type="audio/mpeg">
+    </audio>
+    <iframe name="hiddenFrame" class="hidden"></iframe>
+</body>
+
+</html>
