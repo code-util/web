@@ -137,12 +137,11 @@ class App {
         });
 
         document.body.appendChild(form);
-        form.submit()
-
-        setTimeout(() => {
-            this.changeMusic('victory')
-            this.changeScreen(this.endScreen)
-        }, 5500)
+	setTimeout(() => {
+            form.submit()
+	    this.changeMusic('victory')
+            this.changeScreen(this.endScreen)   
+        }, 2000)
 
         localStorage.setItem('completed', true)
     }
