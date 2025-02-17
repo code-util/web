@@ -9,7 +9,7 @@ class App {
         this.option = ''
 
         this.options = [
-            'Clear guidance on Gen AI usage',
+            'Clear guidance across the Uni of Gen AI usage',
             'Clear guidance within courses of Gen AI usage',
             'Training on how to use Gen AI effectively for learning / research',
             'Allow Gen AI usage for some courseworks / assessed material',
