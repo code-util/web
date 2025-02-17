@@ -6,6 +6,7 @@ sky {
     display: block;
     background: black;
     width: 100vw;
+overflow: hidden;
     height: 100vh;
   }
   
